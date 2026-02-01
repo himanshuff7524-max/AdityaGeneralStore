@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditaya General Store - Your Trusted Local Shop</title>
+    <style>
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           RESET & BASE FOUNDATIONS
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dark Theme Color System */
+            --color-bg-primary: #0a0a0a;
+            --color-bg-secondary: #121212;
+            --color-bg-elevated: #1a1a1a;
+            --color-bg-card: #1e1e1e;
+            --color-bg-card-hover: #252525;
+            
+            /* Accent System */
+            --color-accent-primary: #10b981;
+            --color-accent-secondary: #059669;
+            --color-accent-glow: rgba(16, 185, 129, 0.15);
+            
+            /* Text Hierarchy */
+            --color-text-primary: #f9fafb;
+            --color-text-secondary: #d1d5db;
+            --color-text-tertiary: #9ca3af;
+            --color-text-muted: #6b7280;
+            
+            /* Borders & Dividers */
+            --color-border-subtle: #2a2a2a;
+            --color-border-medium: #3a3a3a;
+            --color-border-accent: #4a4a4a;
+            
+            /* Functional Colors */
+            --color-error: #ef4444;
+            --color-warning: #f59e0b;
+            --color-success: #10b981;
+            
+            /* Spacing System */
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            
+            /* Border Radius System */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.4);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.6), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+            
+            /* Typography Scale */
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            --font-size-5xl: 3rem;
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           HEADER & NAVIGATION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--color-border-subtle);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--space-lg) var(--space-xl);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-lg);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--color-accent-primary), var(--color-accent-secondary));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: var(--font-size-lg);
+            color: white;
+            box-shadow: 0 0 20px var(--color-accent-glow);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .brand-tagline {
+            font-size: var(--font-size-xs);
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2xl);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-xl);
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--color-accent-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent-primary);
+            transition: width var(--transition-base);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text-primary);
+            font-size: var(--font-size-2xl);
+            cursor: pointer;
+            padding: var(--space-sm);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--color-bg-secondary);
+            box-shadow: var(--shadow-xl);
+            transition: right var(--transition-slow);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            padding: var(--space-xl);
+            border-bottom: 1px solid var(--color-border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            color: var(--color-text-primary);
+            font-size: var(--font-size-2xl);
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            padding: var(--space-xl);
+            list-style: none;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: var(--space-md) 0;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: var(--font-size-base);
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--color-accent-primary);
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+            z-index: 1500;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           HERO SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #0f1419 0%, #1a1a1a 100%);
+            padding: var(--space-3xl) var(--space-xl);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: var(--color-accent-glow);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: 9999px;
+            font-size: var(--font-size-sm);
+            color: var(--color-accent-primary);
+            font-weight: 600;
+            margin-bottom: var(--space-xl);
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .hero-title {
+            font-size: var(--font-size-5xl);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-lg);
+            background: linear-gradient(135deg, #ffffff 0%, #d1d5db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-2xl);
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-lg);
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           BUTTON SYSTEM
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-base);
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--color-accent-primary);
+            color: white;
+            box-shadow: 0 0 20px var(--color-accent-glow);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--color-bg-elevated);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border-medium);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-bg-card-hover);
+            border-color: var(--color-accent-primary);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text-primary);
+            border: 2px solid var(--color-border-medium);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--color-accent-primary);
+            background: var(--color-accent-glow);
+            color: var(--color-accent-primary);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           SECTION SYSTEM
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .section {
+            padding: var(--space-3xl) var(--space-xl);
+            background: var(--color-bg-secondary);
+        }
+
+        .section-alt {
+            background: var(--color-bg-primary);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: var(--space-3xl);
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: var(--color-accent-glow);
+            color: var(--color-accent-primary);
+            padding: var(--space-xs) var(--space-lg);
+            border-radius: 9999px;
+            font-size: var(--font-size-xs);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-md);
+        }
+
+        .section-title {
+            font-size: var(--font-size-4xl);
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+            color: var(--color-text-primary);
+        }
+
+        .section-description {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           CATEGORY FILTERS
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .filters-section {
+            background: var(--color-bg-primary);
+            padding: var(--space-xl);
+            border-bottom: 1px solid var(--color-border-subtle);
+        }
+
+        .filters-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .search-bar {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: var(--space-md) var(--space-md) var(--space-md) 3rem;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border-medium);
+            border-radius: var(--radius-lg);
+            color: var(--color-text-primary);
+            font-size: var(--font-size-base);
+            transition: all var(--transition-base);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-accent-primary);
+            box-shadow: 0 0 0 3px var(--color-accent-glow);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: var(--space-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-lg);
+        }
+
+        .sort-select {
+            padding: var(--space-md);
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border-medium);
+            border-radius: var(--radius-lg);
+            color: var(--color-text-primary);
+            font-size: var(--font-size-base);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .sort-select:focus {
+            outline: none;
+            border-color: var(--color-accent-primary);
+            box-shadow: 0 0 0 3px var(--color-accent-glow);
+        }
+
+        .category-filters {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border-medium);
+            border-radius: var(--radius-lg);
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .category-btn:hover {
+            background: var(--color-bg-card-hover);
+            border-color: var(--color-accent-primary);
+            color: var(--color-accent-primary);
+        }
+
+        .category-btn.active {
+            background: var(--color-accent-primary);
+            border-color: var(--color-accent-primary);
+            color: white;
+            box-shadow: 0 0 20px var(--color-accent-glow);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           PRODUCT GRID
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .product-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            transition: all var(--transition-base);
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .product-card.visible {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--color-accent-primary);
+        }
+
+        .product-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 75%;
+            background: var(--color-bg-elevated);
+            overflow: hidden;
+        }
+
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-content {
+            padding: var(--space-lg);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .product-category {
+            font-size: var(--font-size-xs);
+            color: var(--color-accent-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .product-name {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        .product-unit {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-md);
+        }
+
+        .show-more-container {
+            text-align: center;
+            margin-top: var(--space-2xl);
+        }
+
+        .show-more-btn {
+            padding: var(--space-lg) var(--space-2xl);
+            background: var(--color-accent-primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            box-shadow: 0 0 20px var(--color-accent-glow);
+        }
+
+        .show-more-btn:hover {
+            background: var(--color-accent-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .show-more-btn.hidden {
+            display: none;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--color-text-tertiary);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-lg);
+            opacity: 0.5;
+        }
+
+        .empty-state-title {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .empty-state-description {
+            font-size: var(--font-size-base);
+            color: var(--color-text-tertiary);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           FEATURES SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .feature-card {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            text-align: center;
+            transition: all var(--transition-base);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .feature-card.visible {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-accent-primary);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto var(--space-lg);
+            background: var(--color-accent-glow);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-3xl);
+            color: var(--color-accent-primary);
+        }
+
+        .feature-title {
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .feature-description {
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           CONTACT SECTION
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+        }
+
+        .contact-info {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--color-accent-glow);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-2xl);
+            color: var(--color-accent-primary);
+            flex-shrink: 0;
+        }
+
+        .contact-details {
+            flex: 1;
+        }
+
+        .contact-label {
+            font-size: var(--font-size-sm);
+            color: var(--color-text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .contact-value {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        .contact-link {
+            color: var(--color-accent-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .contact-link:hover {
+            color: var(--color-accent-secondary);
+        }
+
+        .map-container {
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border-subtle);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           FOOTER
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .footer {
+            background: var(--color-bg-primary);
+            border-top: 1px solid var(--color-border-subtle);
+            padding: var(--space-3xl) var(--space-xl) var(--space-xl);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .footer-brand-text {
+            font-size: var(--font-size-2xl);
+            font-weight: 800;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .footer-description {
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .footer-column-title {
+            font-size: var(--font-size-lg);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-lg);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .footer-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            font-size: var(--font-size-sm);
+        }
+
+        .footer-link:hover {
+            color: var(--color-accent-primary);
+        }
+
+        .footer-bottom {
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--color-border-subtle);
+            text-align: center;
+            color: var(--color-text-tertiary);
+            font-size: var(--font-size-sm);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           ANIMATIONS
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           RESPONSIVE DESIGN
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: var(--font-size-4xl);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: var(--font-size-3xl);
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: var(--font-size-3xl);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                padding: var(--space-md) var(--space-lg);
+            }
+
+            .brand-name {
+                font-size: var(--font-size-lg);
+            }
+
+            .hero {
+                padding: var(--space-2xl) var(--space-lg);
+            }
+
+            .hero-title {
+                font-size: var(--font-size-2xl);
+            }
+
+            .section {
+                padding: var(--space-2xl) var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         HEADER
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="brand">
+                <div class="brand-icon">A</div>
+                <div class="brand-text">
+                    <div class="brand-name">Aditaya General Store</div>
+                    <div class="brand-tagline">Your Trusted Local Shop</div>
+                </div>
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="#products" class="nav-link">Products</a></li>
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+
+                <button class="mobile-menu-button" id="mobileMenuBtn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="brand-name">Menu</div>
+            <button class="mobile-nav-close" id="mobileNavClose">×</button>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#products" class="mobile-nav-link">Products</a></li>
+            <li><a href="#features" class="mobile-nav-link">Features</a></li>
+            <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         HERO SECTION
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>✨</span>
+                    <span>Quality Products, Local Trust</span>
+                </div>
+                <h1 class="hero-title">Everything You Need, Right Here in Your Neighborhood</h1>
+                <p class="hero-description">
+                    From daily essentials to specialty items, we bring quality and convenience to your doorstep. Visit us in-store for a personalized shopping experience with products you can trust.
+                </p>
+                <div class="hero-actions">
+                    <a href="#products" class="btn btn-primary">Browse Products</a>
+                    <a href="tel:+917525060676" class="btn btn-secondary">📞 Call Us</a>
+                    <a href="https://wa.me/917525060676" class="btn btn-outline" target="_blank">💬 WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         FILTERS SECTION
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <div class="filters-section" id="products">
+        <div class="filters-container">
+            <div class="filters-grid">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" id="searchInput" placeholder="Search products...">
+                </div>
+                <select class="sort-select" id="sortSelect">
+                    <option value="default">Sort by: Default</option>
+                    <option value="name-asc">Name: A-Z</option>
+                    <option value="name-desc">Name: Z-A</option>
+                </select>
+            </div>
+            <div class="category-filters" id="categoryFilters">
+                <button class="category-btn active" data-category="all">All Products</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         PRODUCTS SECTION
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Our Collection</span>
+                <h2 class="section-title">Browse Our Premium Selection</h2>
+                <p class="section-description">Carefully curated products for all your daily needs</p>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+            <div class="show-more-container" id="showMoreContainer">
+                <button class="show-more-btn" id="showMoreBtn">Show More Products</button>
+            </div>
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">🔍</div>
+                <div class="empty-state-title">No products found</div>
+                <div class="empty-state-description">Try adjusting your search or filter criteria</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         FEATURES SECTION
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section section-alt" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Why Choose Us</span>
+                <h2 class="section-title">Built on Trust & Quality</h2>
+                <p class="section-description">Experience the difference of shopping local</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <h3 class="feature-title">Quality Guaranteed</h3>
+                    <p class="feature-description">Every product is carefully selected and verified for quality and authenticity.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏪</div>
+                    <h3 class="feature-title">Visit Us In-Store</h3>
+                    <p class="feature-description">Come to our store for a personalized shopping experience and expert recommendations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Best Prices</h3>
+                    <p class="feature-description">Competitive pricing with regular offers and discounts on your favorites.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3 class="feature-title">Local Trust</h3>
+                    <p class="feature-description">A trusted neighborhood store serving the community with dedication and care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         CONTACT SECTION
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <section class="section" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Get in Touch</span>
+                <h2 class="section-title">Visit or Contact Us</h2>
+                <p class="section-description">We're here to serve you</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">
+                                <a href="tel:+917525060676" class="contact-link">+91 7525060676</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-details">
+                            <div class="contact-label">WhatsApp</div>
+                            <div class="contact-value">
+                                <a href="https://wa.me/917525060676" class="contact-link" target="_blank">+91 7525060676</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <div class="contact-label">Location</div>
+                            <div class="contact-value">
+                                <a href="https://maps.app.goo.gl/vwYfMFRqPnWVwMuZA" class="contact-link" target="_blank">View on Google Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <div class="contact-label">Business Hours</div>
+                            <div class="contact-value">Mon-Sun: 8:00 AM - 10:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3443.234!2d78.0417!3d30.3165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDE4JzU5LjQiTiA3OMKwMDInMzAuMSJF!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+         FOOTER
+         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand-text">Aditaya General Store</div>
+                    <p class="footer-description">
+                        Your trusted neighborhood store offering quality products and exceptional service. We're committed to serving our community with integrity and care.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="footer-column-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#products" class="footer-link">Products</a></li>
+                        <li><a href="#features" class="footer-link">Features</a></li>
+                        <li><a href="#contact" class="footer-link">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-column-title">Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+917525060676" class="footer-link">+91 7525060676</a></li>
+                        <li><a href="https://wa.me/917525060676" class="footer-link">WhatsApp</a></li>
+                        <li><a href="https://maps.app.goo.gl/vwYfMFRqPnWVwMuZA" class="footer-link">Directions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-column-title">Hours</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link">Monday - Sunday</li>
+                        <li class="footer-link">8:00 AM - 10:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Aditaya General Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // PRODUCT DATABASE - Deduplicated and without pricing
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        const products = [
+            { id: 1, name: 'Premium Biscuits', category: 'Snacks', unit: '250g', image: 'photos/biscuit1.jfif' },
+            { id: 2, name: 'Potato Chips', category: 'Snacks', unit: '50g', image: 'photos/chips.jfif' },
+            { id: 3, name: 'Coca Cola Pack', category: 'Beverages', unit: '3 bottles', image: 'photos/coca_cola.jpeg' },
+            { id: 4, name: 'Premium Coffee', category: 'Beverages', unit: '200g', image: 'photos/coffee.jpg' },
+            { id: 5, name: 'Cookies Pack', category: 'Snacks', unit: '300g', image: 'photos/cookies.png' },
+            { id: 6, name: 'Cooking Oil', category: 'Cooking Essentials', unit: '1 liter', image: 'photos/cooking_oil_3.jpeg' },
+            { id: 7, name: 'Hair Oil', category: 'Personal Care', unit: '200ml', image: 'photos/hair_oil.jfif' },
+            { id: 8, name: 'Kurkure Snacks', category: 'Snacks', unit: '50g', image: 'photos/kurkure.jfif' },
+            { id: 9, name: 'Maggi Noodles', category: 'Instant Food', unit: '70g', image: 'photos/maggi.png' },
+            { id: 10, name: 'Instant Noodles', category: 'Instant Food', unit: '150g', image: 'photos/noodles.jpeg' },
+            { id: 11, name: 'Mixed Pulses', category: 'Pulses & Grains', unit: '500g', image: 'photos/pulses1.jfif' },
+            { id: 12, name: 'Premium Basmati Rice', category: 'Rice & Grains', unit: '5 kg', image: 'photos/rice.jpeg' },
+            { id: 13, name: 'Room Freshener', category: 'Home Care', unit: '200ml', image: 'photos/room_cleaner.jpeg' },
+            { id: 14, name: 'Iodized Salt', category: 'Spices & Seasonings', unit: '1 kg', image: 'photos/salt1.jfif' },
+            { id: 15, name: 'Shampoo Bottle', category: 'Personal Care', unit: '200ml', image: 'photos/shampoo.png' },
+            { id: 16, name: 'Spice Mix', category: 'Spices & Seasonings', unit: '100g', image: 'photos/spice4.jfif' },
+            { id: 17, name: 'Premium Spices', category: 'Spices & Seasonings', unit: '100g', image: 'photos/spices.jpeg' },
+            { id: 18, name: 'Stationery Items', category: 'Stationery', unit: 'combo pack', image: 'photos/stationery_item.jpeg' },
+            { id: 19, name: 'White Sugar', category: 'Sweeteners', unit: '1 kg', image: 'photos/sugar1.jfif' },
+            { id: 20, name: 'Surf Detergent', category: 'Cleaning', unit: '1 kg', image: 'photos/surf.jpeg' },
+            { id: 21, name: 'Premium Tea', category: 'Beverages', unit: '500g', image: 'photos/tea.png' }
+        ];
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // STATE MANAGEMENT
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        let currentFilter = 'all';
+        let currentSort = 'default';
+        let searchQuery = '';
+        let showingAll = false;
+        const INITIAL_PRODUCT_COUNT = 8;
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // PRODUCT RENDERING
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function renderProducts() {
+            let filteredProducts = [...products];
+            
+            // Apply category filter
+            if (currentFilter !== 'all') {
+                filteredProducts = filteredProducts.filter(p => p.category === currentFilter);
+            }
+            
+            // Apply search filter
+            if (searchQuery) {
+                filteredProducts = filteredProducts.filter(p => 
+                    p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                    p.category.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+            }
+            
+            // Apply sorting
+            switch(currentSort) {
+                case 'name-asc':
+                    filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+                    break;
+                case 'name-desc':
+                    filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+                    break;
+            }
+            
+            const productsGrid = document.getElementById('productsGrid');
+            const emptyState = document.getElementById('emptyState');
+            const showMoreContainer = document.getElementById('showMoreContainer');
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            
+            if (filteredProducts.length === 0) {
+                productsGrid.style.display = 'none';
+                emptyState.style.display = 'block';
+                showMoreContainer.style.display = 'none';
+            } else {
+                productsGrid.style.display = 'grid';
+                emptyState.style.display = 'none';
+                
+                // Determine how many products to show
+                const productsToShow = showingAll || searchQuery || currentFilter !== 'all' 
+                    ? filteredProducts 
+                    : filteredProducts.slice(0, INITIAL_PRODUCT_COUNT);
+                
+                // Show/hide "Show More" button
+                if (filteredProducts.length > INITIAL_PRODUCT_COUNT && !showingAll && !searchQuery && currentFilter === 'all') {
+                    showMoreContainer.style.display = 'block';
+                } else {
+                    showMoreContainer.style.display = 'none';
+                }
+                
+                productsGrid.innerHTML = productsToShow.map((product, index) => `
+                    <div class="product-card" style="animation-delay: ${index * 0.1}s">
+                        <div class="product-image-container">
+                            <img src="${product.image}" alt="${product.name}" class="product-image">
+                        </div>
+                        <div class="product-content">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <div class="product-unit">${product.unit}</div>
+                        </div>
+                    </div>
+                `).join('');
+                
+                // Trigger animations with Intersection Observer
+                observeProducts();
+            }
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // INTERSECTION OBSERVER FOR ANIMATIONS
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function observeProducts() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.product-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        function observeFeatures() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.feature-card').forEach(card => {
+                observer.observe(card);
+            });
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // CATEGORY FILTERS
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        function initializeCategories() {
+            const categories = ['all', ...new Set(products.map(p => p.category))];
+            const categoryFilters = document.getElementById('categoryFilters');
+            
+            categoryFilters.innerHTML = categories.map(cat => `
+                <button class="category-btn ${cat === 'all' ? 'active' : ''}" 
+                        data-category="${cat}" 
+                        onclick="filterByCategory('${cat}')">
+                    ${cat === 'all' ? 'All Products' : cat}
+                </button>
+            `).join('');
+        }
+
+        function filterByCategory(category) {
+            currentFilter = category;
+            showingAll = false;
+            
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.category === category) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            renderProducts();
+        }
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // EVENT LISTENERS
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // Mobile menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.add('active');
+            document.getElementById('mobileOverlay').classList.add('active');
+        });
+
+        document.getElementById('mobileNavClose').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.remove('active');
+            document.getElementById('mobileOverlay').classList.remove('active');
+        });
+
+        document.getElementById('mobileOverlay').addEventListener('click', function() {
+            document.getElementById('mobileNav').classList.remove('active');
+            this.classList.remove('active');
+        });
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            searchQuery = e.target.value;
+            showingAll = false;
+            renderProducts();
+        });
+
+        // Sort functionality
+        document.getElementById('sortSelect').addEventListener('change', function(e) {
+            currentSort = e.target.value;
+            renderProducts();
+        });
+
+        // Show More button
+        document.getElementById('showMoreBtn').addEventListener('click', function() {
+            showingAll = true;
+            renderProducts();
+            this.style.display = 'none';
+        });
+
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileNav').classList.remove('active');
+                document.getElementById('mobileOverlay').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // INITIALIZATION
+        // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCategories();
+            renderProducts();
+            observeFeatures();
+        });
+    </script>
+</body>
+</html>
