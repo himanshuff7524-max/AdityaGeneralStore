@@ -634,12 +634,6 @@
             line-height: 1.3;
         }
 
-        .product-unit {
-            font-size: var(--font-size-sm);
-            color: var(--color-text-tertiary);
-            margin-bottom: var(--space-md);
-        }
-
         .show-more-container {
             text-align: center;
             margin-top: var(--space-2xl);
@@ -1267,27 +1261,27 @@
         // PRODUCT DATABASE - Deduplicated and without pricing
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
         const products = [
-            { id: 1, name: 'Premium Biscuits', category: 'Snacks', unit: '250g', image: 'photos/biscuit1.jfif' },
-            { id: 2, name: 'Potato Chips', category: 'Snacks', unit: '50g', image: 'photos/chips.jfif' },
-            { id: 3, name: 'Coca Cola Pack', category: 'Beverages', unit: '3 bottles', image: 'photos/coca_cola.jpeg' },
-            { id: 4, name: 'Premium Coffee', category: 'Beverages', unit: '200g', image: 'photos/coffee.jpg' },
-            { id: 5, name: 'Cookies Pack', category: 'Snacks', unit: '300g', image: 'photos/cookies.png' },
-            { id: 6, name: 'Cooking Oil', category: 'Cooking Essentials', unit: '1 liter', image: 'photos/cooking_oil_3.jpeg' },
-            { id: 7, name: 'Hair Oil', category: 'Personal Care', unit: '200ml', image: 'photos/hair_oil.jfif' },
-            { id: 8, name: 'Kurkure Snacks', category: 'Snacks', unit: '50g', image: 'photos/kurkure.jfif' },
-            { id: 9, name: 'Maggi Noodles', category: 'Instant Food', unit: '70g', image: 'photos/maggi.png' },
-            { id: 10, name: 'Instant Noodles', category: 'Instant Food', unit: '150g', image: 'photos/noodles.jpeg' },
-            { id: 11, name: 'Mixed Pulses', category: 'Pulses & Grains', unit: '500g', image: 'photos/pulses1.jfif' },
-            { id: 12, name: 'Premium Basmati Rice', category: 'Rice & Grains', unit: '5 kg', image: 'photos/rice.jpeg' },
-            { id: 13, name: 'Room Freshener', category: 'Home Care', unit: '200ml', image: 'photos/room_cleaner.jpeg' },
-            { id: 14, name: 'Iodized Salt', category: 'Spices & Seasonings', unit: '1 kg', image: 'photos/salt1.jfif' },
-            { id: 15, name: 'Shampoo Bottle', category: 'Personal Care', unit: '200ml', image: 'photos/shampoo.png' },
-            { id: 16, name: 'Spice Mix', category: 'Spices & Seasonings', unit: '100g', image: 'photos/spice4.jfif' },
-            { id: 17, name: 'Premium Spices', category: 'Spices & Seasonings', unit: '100g', image: 'photos/spices.jpeg' },
-            { id: 18, name: 'Stationery Items', category: 'Stationery', unit: 'combo pack', image: 'photos/stationery_item.jpeg' },
-            { id: 19, name: 'White Sugar', category: 'Sweeteners', unit: '1 kg', image: 'photos/sugar1.jfif' },
-            { id: 20, name: 'Surf Detergent', category: 'Cleaning', unit: '1 kg', image: 'photos/surf.jpeg' },
-            { id: 21, name: 'Premium Tea', category: 'Beverages', unit: '500g', image: 'photos/tea.png' }
+            { id: 1, name: 'Premium Biscuits', category: 'Snacks', image: 'photos/biscuit.jfif' },
+            { id: 2, name: 'Potato Chips', category: 'Snacks', image: 'photos/chips.jfif' },
+            { id: 3, name: 'Coca Cola Pack', category: 'Beverages', image: 'photos/coca_cola.jpeg' },
+            { id: 4, name: 'Premium Coffee', category: 'Beverages', image: 'photos/coffee.jpeg' },
+            { id: 5, name: 'Cookies Pack', category: 'Snacks', image: 'photos/cookies.jpeg' },
+            { id: 6, name: 'Cooking Oil', category: 'Cooking Essentials', image: 'photos/cookingoil.jfif' },
+            { id: 7, name: 'Hair Oil', category: 'Personal Care', image: 'photos/hairoil.jpeg' },
+            { id: 8, name: 'Kurkure Snacks', category: 'Snacks', image: 'photos/kurkure.jfif' },
+            { id: 9, name: 'Maggi Noodles', category: 'Instant Food', image: 'photos/maggi.png' },
+            { id: 10, name: 'Instant Noodles', category: 'Instant Food', image: 'photos/noodles.jpeg' },
+            { id: 11, name: 'Mixed Pulses', category: 'Pulses & Grains', image: 'photos/pulses1.jfif' },
+            { id: 12, name: 'Premium Basmati Rice', category: 'Rice & Grains', image: 'photos/rice.jpeg' },
+            { id: 13, name: 'Room Freshener', category: 'Home Care', image: 'photos/room_cleaner.jpeg' },
+            { id: 14, name: 'Iodized Salt', category: 'Spices & Seasonings', image: 'photos/salt1.jfif' },
+            { id: 15, name: 'Shampoo Bottle', category: 'Personal Care', image: 'photos/shampoo.png' },
+        
+            { id: 16, name: 'Premium Spices', category: 'Spices & Seasonings', image: 'photos/spices.jpeg' },
+            { id: 17, name: 'Stationery Items', category: 'Stationery', image: 'photos/stationery_item.jpeg' },
+            { id: 18, name: 'White Sugar', category: 'Sweeteners', image: 'photos/sugar.jfif' },
+            { id: 19, name: 'Surf Detergent', category: 'Cleaning', image: 'photos/surf.jpeg' },
+            { id: 20, name: 'Premium Tea', category: 'Beverages', image: 'photos/tea.jpeg' }
         ];
 
         // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -1361,7 +1355,6 @@
                         <div class="product-content">
                             <div class="product-category">${product.category}</div>
                             <h3 class="product-name">${product.name}</h3>
-                            <div class="product-unit">${product.unit}</div>
                         </div>
                     </div>
                 `).join('');
